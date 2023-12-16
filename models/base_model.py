@@ -14,17 +14,19 @@ else:
 
 
 class BaseModel:
-    """A base class for all hbnb models"""
+    """Add classes attributes"""
     id = Column(String(60), unique=True, nullable=False, primary_key=True)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
 
+    """A base class for all hbnb models"""
+
     def __init__(self, *args, **kwargs):
-        """Instantiates a new model"""
+        """Instatntiates a new model"""
         if not kwargs:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.utcnow()
-            self.updated_at = datetime.utcnow()
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
         else:
             if "id" not in kwargs:
                 self.id = str(uuid.uuid4())
@@ -54,17 +56,19 @@ class BaseModel:
         return '[{}] ({}) {}'.format(cls, self.id, cp_dict)
 
     def __repr__(self):
-        """Official representation of the object"""
+        """
+        Official representation of the object
+        """
         return self.__str__()
 
     def save(self):
         """Updates updated_at with current time when instance is changed"""
-        self.updated_at = datetime.utcnow()
+        self.updated_at = datetime.now()
         models.storage.new(self)
         models.storage.save()
 
     def delete(self):
-        """Deletes the current instance from the storage"""
+        """Delete the current instance from the models.storage"""
         models.storage.delete(self)
 
     def to_dict(self):
