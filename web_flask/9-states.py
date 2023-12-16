@@ -20,6 +20,11 @@ def states():
     return render_template('9-states.html', states=states)
 
 
+# @app.route('/states/<int:id>')
+# def states_id(id):
+#     states = storage.all(id)
+#     return render_template('9-states.html', id=id)
+
 @app.route('/states/<id>')
 def states_id(id):
     states = storage.all(State).values()
