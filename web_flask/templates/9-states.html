@@ -8,8 +8,8 @@
 </head>
 
 <body>
-    <h1>States</h1>
     {% if states %}
+    <h1>States</h1>
     <ul>
         {% for state in states.values()|sort(attribute='name') %}
         <li>{{ state.id}}: <b>{{ state.name }}</b></li>
@@ -24,7 +24,7 @@
         {% endfor %}
     </ul>
     {% else %}
-    <p>No states found.</p>
+    <h1>Not found</h1>
     {% endif %}
 </body>
 
