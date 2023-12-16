@@ -31,7 +31,6 @@ def c_text(text):
 @app.route('/python/<text>')
 def python_text(text="is cool"):
     """display custom text given"""
-    
     return "Python {}".format(text.replace('_', ' '))
 
 
